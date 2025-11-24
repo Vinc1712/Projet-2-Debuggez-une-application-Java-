@@ -8,18 +8,18 @@ public class AnalyticsCounter {
 	private ISymptomWriter writer;
 	private ISymptomReader reader;
 
-	// Constructeur point 1 
+	// point 1 Constructeur de AnalyticsCounter 
 	public AnalyticsCounter (ISymptomReader reader, ISymptomWriter writer) {
 		this.reader = reader;
 		this.writer = writer;
 	}
 
-public List<String> getSymptoms(){ // point 2
+public List<String> getSymptoms(){ // point 2, à partir d'un fichier text, retourne une liste de symptomes
 		
 	return reader.GetSymptoms(); // retourne une liste de tous les symptômes 
 }
 
-public Map<String,Integer> countSymptoms(List<String>symptoms){ // point 3 
+public Map<String,Integer> countSymptoms(List<String>symptoms){ // point 3, à parti d'une liste, crée une map 
 	
 	Map<String,Integer> counter = new HashMap<>();
 	
@@ -44,7 +44,7 @@ public Map<String,Integer> sortSymptoms(Map<String,Integer>symptoms){ // point 4
 }
 
 
-public void writeSymptoms(Map<String,Integer>symptoms) { // point 5 
+public void writeSymptoms(Map<String,Integer>symptoms) { // point 5 transcris la map dans un fichier texte
 	
 	writer.writeSymptoms(symptoms);
 }
@@ -56,7 +56,7 @@ public static void main (String[] args) {
  ISymptomReader reader = new ReadSymptomDataFromFile ("src/symptoms.txt"); // polymorphisme de l'interface ISymptomReader
  ISymptomWriter writer = new WriteSymptomDataFromFile ("src/result.txt"); // polymorphise de l'interface ISymptomWriter
  
- AnalyticsCounter counter = new AnalyticsCounter (reader, writer); // writer à définir comme fait pour reader 
+ AnalyticsCounter counter = new AnalyticsCounter (reader, writer); 
  
  // Etape 2 création de la liste des symptômes
  List<String> symptoms = counter.getSymptoms();
